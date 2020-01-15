@@ -24,6 +24,7 @@ class Debug(serial.Serial):
     def debug(self):
         #debug terminal to set env variables
         assert mode == mode.TERM
+        assert super().isOpen() == True
         while 1:
             req = input("term>>>")
             if req == "exit()":
@@ -38,6 +39,7 @@ class Debug(serial.Serial):
                     print(output.decode(), end='')
 
     def transmit(self, data:str):
+        assert super().isOpen() == True
         #baud is probably > 115200; transmit mode
         assert mode == mode.GATEWAY
         try:
@@ -46,6 +48,7 @@ class Debug(serial.Serial):
             print("Transmit Failed")
 
     def transmitEchoTerminal(self):
+        assert super().isOpen() == True
         while 1:
             req = input("echo>>>")
             if req == "exit()":
@@ -53,6 +56,7 @@ class Debug(serial.Serial):
             super().write(req.encode() + b'/r/n')
 
     def recv(self):
+        assert super().isOpen() == True
         #baud is probably > 115200; recv mode
         assert mode == mode.ENDPOINT
         while 1:
