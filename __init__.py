@@ -5,4 +5,8 @@ from pkg.radio import generate_config
 
 if __name__ == "__main__":
     print("Zumlink IOT py3 lib")
-    print("Have fun freshmen")
+    print("Have fun ARA freshmen")
+    mode()
+    Debug()
+    Zumlink()
+    generate_config()

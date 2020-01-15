@@ -3,11 +3,18 @@ import time
 from enum import Enum
 
 class mode(Enum):
+
+    def __init__(self):
+        pass
+
     GATEWAY = "GATEWAY"
     ENDPOINT = "ENDPOINT"
     TERM = "TERM"
 
 class Debug(serial.Serial):
+
+    def __init__(self):
+        pass
 
     def __init__(self,device: str, mode = mode.TERM, baud = 9600, bytesize = serial.EIGHTBITS, stopbits=serial.STOPBITS_ONE):
         self.mode = mode

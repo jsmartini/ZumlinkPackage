@@ -35,6 +35,9 @@ def generate_config(radioMode = "Endpoint", rfDataRate = "RATE_1M", txPower=10, 
 
 class Zumlink(serial.Serial):
 
+    def __init(self):
+        pass
+
     def __init__(self, device: str, baudrate=9600, mode=mode.TERM, configuration = generate_config(txPower=0)):
         # True -> baud: 30000000 (I think the actual radio socket)
         # False -> baud:9600 Terminal
