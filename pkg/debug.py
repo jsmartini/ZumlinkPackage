@@ -4,8 +4,8 @@ from enum import Enum
 
 class mode(Enum):
     GATEWAY = "GATEWAY"
-    ENDPOINT = "endpoint"
-    TERM = "term"
+    ENDPOINT = "ENDPOINT"
+    TERM = "TERM"
 
 class Debug(serial.Serial):
 
@@ -44,6 +44,13 @@ class Debug(serial.Serial):
             super().write(data.encode())
         except serial.SerialException("Well shit"):
             print("Transmit Failed")
+
+    def transmitEchoTerminal(self):
+        while 1:
+            req = input("echo>>>")
+            if req == "exit()":
+                break
+            super().write(req.encode() + b'/r/n')
 
     def recv(self):
         #baud is probably > 115200; recv mode
