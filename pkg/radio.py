@@ -2,6 +2,8 @@ import serial
 import time
 from pkg.debug import mode
 
+#rewritten from https://github.com/jsmartini/Cubesat-Telemetry/blob/master/test.py
+
 def generate_config(radioMode = "Endpoint", rfDataRate = "RATE_1M", txPower=10, networkId = 77777, frequencyKey=0, radioFrequency=915.0000, radioHoppingMode="Hopping_On", beaconInterval="ONE_HUNDRED_MS", beaconBurstCount=1, lnaBypass=0, maxLinkDistanceInMiles=5, maxPacketSize=900, cliBaudRate=115200, packetizedBaudRate=3000000, passthruBaudRate = 3000000, databits=8, parity="None", stopbits=1, flowControl="Hardware", passthruLatencyMode="auto", passthruLatencyTimer=16):
     return {
         "radioSettings":[
