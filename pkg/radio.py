@@ -41,7 +41,7 @@ class Zumlink(serial.Serial):
         pass
 
     def __init__(self, device: str, baudrate=9600, mode=mode.TERM, configuration = generate_config(txPower=0)):
-        # True -> baud: 30000000 (I think the actual radio socket)
+        # True -> baud: 30000000 Broadcast mode
         # False -> baud:9600 Terminal
         self.mode = mode
         try:
