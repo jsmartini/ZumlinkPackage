@@ -25,7 +25,7 @@ class Debug(serial.Serial):
                 bytesize=bytesize,
                 stopbits=stopbits
             )
-        except serial.SerialException("WELL SHIT"):
+        except serial.SerialException("Device Not Configured, Dying"):
             exit(-1)
 
     def debug(self):
