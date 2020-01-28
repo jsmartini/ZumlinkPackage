@@ -73,7 +73,7 @@ class Zumlink(serial.Serial):
         return output.decode()
 
     def terminal(self):
-        assert mode == mode.TERM
+        assert self.mode == mode.TERM
         assert super().isOpen() == True
         while True:
             req = input(">>>")
@@ -90,21 +90,21 @@ class Zumlink(serial.Serial):
 
     def transmit(self, dataFile: str) -> None:
         assert super().isOpen() == True
-        assert mode == mode.GATEWAY
+        assert self.mode == mode.GATEWAY
         # writes data to the serial port device
         # to be tested
         super().write(open(dataFile, "rb").read())
 
     def listen(self) -> str:
         assert super().isOpen() == True
-        assert mode == mode.ENDPOINT
+        assert self.mode == mode.ENDPOINT
         # to be tested
         # reads data from the serial port device
         return super().readline().decode("utf-8")
 
     def setup(self, settings):
         assert super().isOpen() == True
-        assert mode == mode.TERM
+        assert self.mode == mode.TERM
         for radioSetting in settings["radioSettings"]:
             self.command("radioSettings." + radioSetting)
         #Serial settings should not change, but uncomment if needed

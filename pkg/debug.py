@@ -4,9 +4,6 @@ from enum import Enum
 
 class mode(Enum):
 
-    def __init__(self):
-        pass
-
     GATEWAY = "GATEWAY"
     ENDPOINT = "ENDPOINT"
     TERM = "TERM"
@@ -30,7 +27,7 @@ class Debug(serial.Serial):
 
     def debug(self):
         #debug terminal to set env variables
-        assert mode == mode.TERM
+        assert self.mode == mode.TERM
         assert super().isOpen() == True
         while 1:
             req = input("term>>>")
@@ -68,4 +65,8 @@ class Debug(serial.Serial):
         assert mode == mode.ENDPOINT
         while 1:
             print(super().readline().decode())
+
+
+if __name__ == "__main__":
+    Debug(device="COM11", mode=mode.GATEWAY, baud=3000000).transmitEchoTerminal()
 
