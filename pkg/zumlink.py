@@ -6,7 +6,7 @@ class Zumlink:
     # common frequencies
     terminal9600 = 9600
     terminal112500 = 112500
-    broadcast = 3000000 #default across all radios for ARA
+    broadcast = 3000000
 
     def __init__(self, device, baud, dump_file="data.recv"):
         self.zumlink = Serial(device)
@@ -16,7 +16,7 @@ class Zumlink:
     def __init__(self, device, baud=0, dump_file="data.recv", transmit=True):
         self.zumlink = Serial(device)
         if transmit:
-            self.zumlink.baud = self.broadcast
+            self.zumlink.baud = broadcast
         elif baud == 0:
             self.zumlink.baud = self.terminal9600
         else:
@@ -58,3 +58,5 @@ class Zumlink:
     def transmitBSON(self, data: dict):
         data_BSON = BSON.encode(data)
         return self.zumlink.write(data_BSON)
+
+
