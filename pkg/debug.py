@@ -68,5 +68,5 @@ class Debug(serial.Serial):
 
 
 if __name__ == "__main__":
-    Debug(device="COM11", mode=mode.GATEWAY, baud=3000000).transmitEchoTerminal()
+    Debug(device="COM", mode=mode.GATEWAY, baud=3000000)
 
